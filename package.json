@@ -13,10 +13,10 @@
     "check": "drizzle-kit check:pg",
     "migrate": "drizzle-kit push:pg",
     "db:migrate": "tsx src/lib/supabase/migrate.ts",
-    "db:generate": "drizzle-kit generate:pg",
+    "db:generate": "drizzle-kit generate:postgres ",
     "db:studio": "drizzle-kit studio",
     "push": "drizzle-kit pg",
-    "db:push": "drizzle-kit push:pg && npm run dev",
+    "db:push": "drizzle-kit push",
     "up": "drizzle-kit up:pg"
   },
   "dependencies": {
