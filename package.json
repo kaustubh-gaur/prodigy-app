@@ -7,13 +7,20 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "pull": "drizzle-kit introspect:pg ",
+    "db:pull": "drizzle-kit introspect:pg ",
     "generate": "drizzle-kit generate",
     "drop": "drizzle-kit drop",
     "check": "drizzle-kit check:pg",
+    "migrate": "drizzle-kit push:pg",
+    "db:migrate": "tsx src/lib/supabase/migrate.ts",
+    "db:generate": "drizzle-kit generate:pg",
+    "db:studio": "drizzle-kit studio",
+    "push": "drizzle-kit pg",
+    "db:push": "drizzle-kit push:pg && npm run dev",
     "up": "drizzle-kit up:pg"
   },
   "dependencies": {
+    "@types/pg": "^8.11.11",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.40.1",
     "next": "15.2.3",
@@ -31,6 +38,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.2.3",
     "tailwindcss": "^4",
+    "tsx": "^4.19.3",
     "typescript": "^5"
   }
 }
