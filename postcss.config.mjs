@@ -1,5 +1,9 @@
-const config = {
-  plugins: ["@tailwindcss/postcss"],
+export default {
+  plugins: {
+    "postcss-import": {},
+    "@tailwindcss/postcss": {},
+    "postcss-nested": {},
+    "postcss-custom-properties": {},
+    autoprefixer: {},
+  },
 };
-
-export default config;
