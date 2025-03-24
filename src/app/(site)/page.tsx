@@ -121,8 +121,7 @@ const HomePage = () => {
               key={arr}
               className="flex
                 flex-nowrap
-                animate-slide
-          "
+                animate-slide"
             >
               {CLIENTS.map((client) => (
                 <div
