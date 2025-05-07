@@ -42,17 +42,21 @@ const HomePage = () => {
           from-primary
           to-brand-primaryBlue
           sm:w-[300px]
+          mx-auto
+          flex
+          justify-center
         "
           >
             <Button
               variant="btn-secondary"
-              className=" w-full
+              className="w-full
             rounded-[10px]
             p-6
             text-2xl
             bg-background
+            flex
             justify-center
-          items-center
+            items-center
           "
             >
               Get Prodigy Free

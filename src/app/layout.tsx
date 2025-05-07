@@ -1,17 +1,17 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import db from "@/lib/supabase/db";
-import { ThemeProvider } from "@/lib/providers/next-theme-provider";
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+export const dynamic = "force-dynamic";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { ThemeProvider } from "@/lib/providers/next-theme-provider";
+import { DM_Sans } from "next/font/google";
+import { twMerge } from "tailwind-merge";
+import AppStateProvider from "@/lib/providers/state-provider";
+import { SupabaseUserProvider } from "@/lib/providers/supabase-user-provider";
+import { Toaster } from "@/components/ui/toaster";
+import { SocketProvider } from "@/lib/providers/socket-provider";
+
+const inter = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,17 +20,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-  console.log(db);
+}) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={twMerge("bg-background", inter.className)}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          {children}
+          <AppStateProvider>
+            <SupabaseUserProvider>
+              <SocketProvider>
+                {children}
+                <Toaster />
+              </SocketProvider>
+            </SupabaseUserProvider>
+          </AppStateProvider>
         </ThemeProvider>
       </body>
     </html>
